@@ -1,0 +1,15 @@
+[18:33:57] Environment prepared
+[18:33:57] Activating monitor mode on: wlan2
+[18:33:58] Monitor mode activated
+[18:33:58] Scanning all channels...
+[18:34:04] Scan stopped by user
+[18:34:04] Parsing CSV file
+[18:34:07] Target selected:
+[18:34:07]   BSSID   : 58:1D:D8:8E:04:E8
+[18:34:07]   CHANNEL :  11
+[18:34:07]   SSID    :  Livebox-5318_6GHz
+[18:34:07] Detecting Wi-Fi PHY capabilities
+[18:34:07] Detected: 802.11ac
+[18:34:07] Cleaning environment
+[18:34:07] TODO: restore interface to managed mode
+[18:34:07] Session ended

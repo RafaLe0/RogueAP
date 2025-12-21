@@ -1,0 +1,12 @@
+
+BSSID, First time seen, Last time seen, channel, Speed, Privacy, Cipher, Authentication, Power, # beacons, # IV, LAN IP, ID-length, ESSID, Key
+E4:9E:12:A7:52:AC, 2025-12-21 11:23:27, 2025-12-21 11:23:33, 11, 195, WPA2, CCMP, PSK, -77,        5,        2,   0.  0.  0.  0,  14, Freebox-41B0F6, 
+58:1D:D8:8E:04:E8, 2025-12-21 11:23:28, 2025-12-21 11:23:33, 11, 195, WPA2, CCMP, PSK, -63,        7,        0,   0.  0.  0.  0,  17, Livebox-5318_6GHz, 
+3A:07:16:6C:87:66, 2025-12-21 11:23:32, 2025-12-21 11:23:32, 11, 130, WPA3 WPA2, CCMP, SAE, -88,        1,        0,   0.  0.  0.  0,   0, , 
+BA:5A:00:F7:FA:B5, 2025-12-21 11:23:32, 2025-12-21 11:23:32,  6, 195, WPA2, CCMP, PSK, -87,        1,        0,   0.  0.  0.  0,  13, Bbox-872B4386, 
+C4:34:6B:0A:E4:0F, 2025-12-21 11:23:32, 2025-12-21 11:23:32,  6,  58, OPN, ,   , -86,        2,        0,   0.  0.  0.  0,  27, HP-Print-0F-Photosmart 5520, 
+
+Station MAC, First time seen, Last time seen, Power, # packets, BSSID, Probed ESSIDs
+94:E7:0B:2C:6C:35, 2025-12-21 11:23:32, 2025-12-21 11:23:32, -79,        1, 58:1D:D8:8E:04:E8,
+20:98:ED:4A:78:B7, 2025-12-21 11:23:33, 2025-12-21 11:23:33, -64,        1, E4:9E:12:A7:52:AC,
+

@@ -1,0 +1,126 @@
+#!/usr/bin/env bash
+set -u
+
+if [[ -d "/usr/local/lib/airrecon" ]]; then
+    LIB_DIR="/usr/local/lib/airrecon"
+else
+    BASE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+    LIB_DIR="$BASE_DIR/lib"
+fi
+
+source "$LIB_DIR/logging.sh"
+source "$LIB_DIR/utils.sh"
+source "$LIB_DIR/wifi.sh"
+source "$LIB_DIR/detect.sh"
+
+# Defaults
+IFACE_MON=""
+LOG_DIR="./logs"
+MODE="scan"
+
+usage() {
+  cat <<'EOF'
+airRecon - Wi-Fi Evil Twin
+
+Usage:
+  airRecon [OPTIONS]
+
+Options:
+  -im, --iface_mon <iface>     Wi-Fi interface used for monitor/capture (required)
+  -ig, --iface_inet <iface>    Wi-Fi interface used for ip forwarding
+  -l, --log-dir <dir>     Log directory (default: ./logs)
+  -s, --scan              Run scan workflow (default)
+  -h, --help              Show this help
+
+Examples:
+  sudo airRecon -i wlan2
+  sudo airRecon --iface wlan2 --log-dir /var/log/airrecon
+EOF
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -im|--iface_mon)
+      IFACE_MON="${2:-}"
+      shift 2
+      ;;
+    -ig|--iface_inet)
+      IFACE_INET="${2:-}"
+      shift 2
+      ;;
+    -l|--log-dir)
+      LOG_DIR="${2:-}"
+      shift 2
+      ;;
+    -s|--scan)
+      MODE="scan"
+      shift
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "[ERROR] Unknown option: $1" >&2
+      usage
+      exit 1
+      ;;
+  esac
+done
+
+if [[ -z "$IFACE_MON" ]]; then
+  echo "[ERROR] No interface specified. Use -i <iface>." >&2
+  usage
+  exit 1
+fi
+
+# ─── Runtime variables ─────────────────────────────────────────────────────────
+DATE="$(date +%F_%H-%M-%S)"
+LOG_FILE="$LOG_DIR/session_$DATE.log"
+
+CAPTURE_PREFIX="capture_${DATE}"
+CSV_FILE="${CAPTURE_PREFIX}-01.csv"
+PCAP_FILE="${CAPTURE_PREFIX}-01.cap"
+
+# Shared directory (for docker bind mount)
+SHARED_DIR="$(pwd)/shared"
+mkdir -p "$SHARED_DIR"
+
+# Export globals for libs
+export IFACE_MON LOG_DIR DATE LOG_FILE
+export CAPTURE_PREFIX CSV_FILE PCAP_FILE
+export SHARED_DIR
+
+# ─── Main workflow ─────────────────────────────────────────────────────────────
+main() {
+  require_root
+  prepare_env
+
+  case "$MODE" in
+    scan)
+      enable_monitor_mode
+      scan_environment
+      parse_csv
+      select_target_ap
+      detect_hw_spec
+
+      sanitize_ssid
+      setup_ap_interface
+      enable_ip_forwarding
+      setup_nat
+      generate_dnsmasq_conf
+      start_dnsmasq
+      generate_hostapd_conf
+      start_hostapd
+      ;;
+    *)
+      die "Unknown mode: $MODE"
+      ;;
+  esac
+
+  cleanup
+  log "Session ended"
+}
+
+main "$@"
+

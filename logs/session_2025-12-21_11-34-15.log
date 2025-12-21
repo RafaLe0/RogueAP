@@ -1,0 +1,26 @@
+[11:34:15] Environment prepared
+[11:34:15] Activating monitor mode on: wlan2
+[11:34:15] Monitor mode activated
+[11:34:15] Scanning all channels...
+[11:34:21] Scan stopped by user
+[11:34:21] Parsing CSV file
+[11:34:23] Target selected:
+[11:34:23]   BSSID   : 58:1D:D8:8E:04:E8
+[11:34:23]   CHANNEL : 11
+[11:34:23]   SSID    :  Livebox-5318_6GHz
+[11:34:23] Detecting Wi-Fi PHY capabilities
+[11:34:23] Detected: 802.11ac
+[11:34:23] Configuring AP interface (gateway IP)
+[11:34:23] [SIMULATION] Assigning IP 192.168.50.1/24 to wlan2
+[11:34:23] Enabling IPv4 forwarding (router mode)
+[11:34:23] [SIMULATION] net.ipv4.ip_forward = 1
+[11:34:23] Configuring NAT masquerading
+[11:34:23] [SIMULATION] NAT rules applied on upstream interface
+[11:34:23] Generating dnsmasq configuration
+[11:34:23] dnsmasq config written to /home/archy/airRecon/shared/dnsmasq_Livebox-5318_6GHz.conf
+[11:34:23] [SIMULATION] dnsmasq would be started here
+[11:34:23] Generating hostapd configuration
+[11:34:23] hostapd config written to /home/archy/airRecon/shared/airrecon_Livebox-5318_6GHz.conf
+[11:34:23] Cleaning environment
+[11:34:23] TODO: restore interface to managed mode
+[11:34:23] Session ended

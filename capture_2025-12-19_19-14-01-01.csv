@@ -1,0 +1,7 @@
+
+BSSID, First time seen, Last time seen, channel, Speed, Privacy, Cipher, Authentication, Power, # beacons, # IV, LAN IP, ID-length, ESSID, Key
+A4:3E:51:11:D1:03, 2025-12-19 19:14:01, 2025-12-19 19:14:02,  1, 130, WPA2 WPA, CCMP TKIP, PSK, -90,        2,        0,   0.  0.  0.  0,  12, Livebox-D103, 
+C4:34:6B:0A:E4:0F, 2025-12-19 19:14:02, 2025-12-19 19:14:02,  6,  58, OPN, ,   , -79,        2,        0,   0.  0.  0.  0,  27, HP-Print-0F-Photosmart 5520, 
+
+Station MAC, First time seen, Last time seen, Power, # packets, BSSID, Probed ESSIDs
+

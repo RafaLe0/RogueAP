@@ -1,0 +1,17 @@
+[19:11:11] Environment prepared
+[19:11:11] Activating monitor mode on: wlan2
+[19:11:11] Monitor mode activated
+[19:11:11] Scanning all channels...
+[19:11:14] Scan stopped by user
+[19:11:14] Parsing CSV file
+[19:11:15] Target selected:
+[19:11:15]   BSSID   : 58:1D:D8:8E:04:E8
+[19:11:15]   CHANNEL :  11
+[19:11:15]   SSID    :  Livebox-5318_6GHz
+[19:11:15] Detecting Wi-Fi PHY capabilities
+[19:11:16] Detected: 802.11ac
+[19:11:16] Creating the rogue AP based on the targeted wifi.
+[19:11:16] hostapd-mana config written to /tmp/airRecon_ Livebox-5318_6GHz.conf
+[19:11:16] Cleaning environment
+[19:11:16] TODO: restore interface to managed mode
+[19:11:16] Session ended

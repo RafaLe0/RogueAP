@@ -22,7 +22,13 @@ enable_ip_forwarding() {
 
 setup_nat() {
     log "Configuring NAT masquerading"
-    sudo iptables -I POSTROUTING -t nat -o $IFACE_INET -j MASQUERADE
+    detect_inet_interface
+
+    iptables -t nat -A POSTROUTING -o "$IFACE_INET" -j MASQUERADE
+    iptables -A FORWARD -i "$IFACE_MON" -o "$IFACE_INET" -j ACCEPT
+    iptables -A FORWARD -i "$IFACE_INET" -o "$IFACE_MON" -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+    log "NAT rules applied ($IFACE_MON → $IFACE_INET)"
 }
 
 
@@ -121,7 +127,7 @@ generate_dnsmasq_conf() {
 
 start_dnsmasq() {
     log "Starting DNSMASQ configuration file under : $DNSMASQ_CONF"
-    sudo dnsmasq -C "$DNSMASQ_CONF" & DNSMASQ_PID=$!
+    sudo dnsmasq -d -C "$DNSMASQ_CONF" & DNSMASQ_PID=$!
     log "dnsmasq started (PID=$DNSMASQ_PID)"
 }
 

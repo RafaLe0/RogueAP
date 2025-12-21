@@ -1,0 +1,30 @@
+[14:26:31] Environment prepared
+[14:26:31] Activating monitor mode on: wlan2
+[14:26:31] Monitor mode activated
+[14:26:31] Scanning all channels...
+[14:26:37] Scan stopped by user
+[14:26:37] Parsing CSV file
+[14:26:39] Target selected:
+[14:26:39]   BSSID   : 58:1D:D8:8E:04:E8
+[14:26:39]   CHANNEL : 11
+[14:26:39]   SSID    :  Livebox-5318_6GHz
+[14:26:39] Detecting Wi-Fi PHY capabilities
+[14:26:39] Detected: 802.11ac
+[14:26:39] Configuring AP interface (gateway IP)
+[14:26:39] IP for wlan2 properly configured.
+[14:26:39] Enabling IPv4 forwarding (router mode)
+[14:26:39] Configuring NAT masquerading
+[14:26:39] Generating dnsmasq configuration
+[14:26:39] dnsmasq config written to /home/archy/airRecon/shared/dnsmasq_Livebox-5318_6GHz.conf
+[14:26:39] Starting DNSMASQ configuration file under : /home/archy/airRecon/shared/dnsmasq_Livebox-5318_6GHz.conf
+[14:26:39] dnsmasq started (PID=1063354)
+[14:26:39] Generating hostapd configuration
+[14:26:39] hostapd config written to /home/archy/airRecon/shared/airrecon_Livebox-5318_6GHz.conf
+[14:26:39] [TESTING] Starting hostapd
+[14:26:39] hostapd started (PID=1063367)
+[14:26:39] Rogue AP fully operational
+[14:26:39] Press Ctrl+C to stop
+[14:27:43] Interrupt received (Ctrl+C)
+[14:27:43] Cleaning environment
+[14:27:43] Stopping services
+[14:27:43] Services stopped

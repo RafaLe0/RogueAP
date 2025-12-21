@@ -1,0 +1,8 @@
+
+BSSID, First time seen, Last time seen, channel, Speed, Privacy, Cipher, Authentication, Power, # beacons, # IV, LAN IP, ID-length, ESSID, Key
+E4:9E:12:A7:52:AC, 2025-12-21 14:49:37, 2025-12-21 14:49:37, 11,  -1, WPA, ,   , -80,        0,        3,   0.  0.  0.  0,   0, , 
+58:1D:D8:8E:04:E8, 2025-12-21 14:49:37, 2025-12-21 14:49:38, 11, 195, WPA2, CCMP, PSK, -59,        2,        3,   0.  0.  0.  0,  17, Livebox-5318_6GHz, 
+
+Station MAC, First time seen, Last time seen, Power, # packets, BSSID, Probed ESSIDs
+88:3D:24:27:9A:74, 2025-12-21 14:49:37, 2025-12-21 14:49:37, -59,        1, 58:1D:D8:8E:04:E8,
+

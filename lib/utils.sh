@@ -14,12 +14,34 @@ prepare_env() {
     log "Environment prepared"
 }
 
+handle_interrupt() {
+    log "Interrupt received (Ctrl+C)"
+    cleanup
+    exit 0
+}
+
+detect_inet_interface() {
+    IFACE_INET=$(ip route show default \
+        | sort -k5,5n \
+        | head -n1 \
+        | awk '{print $5}')
+
+    [[ -n "$IFACE_INET" ]] || die "Unable to detect internet interface"
+
+    log "Detected internet interface: $IFACE_INET"
+}
+
 cleanup() {
-    log "Cleaning environment"
     log "Stopping services"
 
-    [[ -n "${HOSTAPD_PID:-}" ]] && kill "$HOSTAPD_PID" 2>/dev/null
-    [[ -n "${DNSMASQ_PID:-}" ]] && kill "$DNSMASQ_PID" 2>/dev/null
+    pkill dnsmasq 2>/dev/null || true
+    pkill hostapd 2>/dev/null || true
+
+    iptables -t nat -F
+    iptables -F
+
+    sysctl -w net.ipv4.ip_forward=0 >/dev/null
 
     log "Services stopped"
 }
+

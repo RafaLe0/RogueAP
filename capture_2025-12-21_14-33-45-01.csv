@@ -1,6 +1,6 @@
 
 BSSID, First time seen, Last time seen, channel, Speed, Privacy, Cipher, Authentication, Power, # beacons, # IV, LAN IP, ID-length, ESSID, Key
-58:1D:D8:8E:04:E8, 2025-12-20 19:11:11, 2025-12-20 19:11:11, 11, 195, WPA2, CCMP, PSK, -62,        1,        2,   0.  0.  0.  0,  17, Livebox-5318_6GHz, 
+58:1D:D8:8E:04:E8, 2025-12-21 14:33:49, 2025-12-21 14:33:49, 11, 195, WPA2, CCMP, PSK, -59,        3,        0,   0.  0.  0.  0,  17, Livebox-5318_6GHz, 
 
 Station MAC, First time seen, Last time seen, Power, # packets, BSSID, Probed ESSIDs
 

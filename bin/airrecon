@@ -108,18 +108,28 @@ main() {
       setup_ap_interface
       enable_ip_forwarding
       setup_nat
+
       generate_dnsmasq_conf
       start_dnsmasq
+
       generate_hostapd_conf
       start_hostapd
+
+      # Gestion propre de Ctrl+C
+      trap handle_interrupt SIGINT SIGTERM
+
+      log "Rogue AP fully operational"
+      log "Press Ctrl+C to stop"
+
+      # Boucle volontaire pour garder le script actif
+      while true; do
+        sleep 1
+      done
       ;;
     *)
       die "Unknown mode: $MODE"
       ;;
   esac
-
-  cleanup
-  log "Session ended"
 }
 
 main "$@"

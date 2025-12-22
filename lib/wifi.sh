@@ -126,7 +126,7 @@ generate_dnsmasq_conf() {
 
 
 start_dnsmasq() {
-    log "Starting DNSMASQ configuration file under : $DNSMASQ_CONF"
+    log "[x] Starting DNSMASQ configuration file under : $DNSMASQ_CONF"
     sudo dnsmasq -d -C "$DNSMASQ_CONF" & DNSMASQ_PID=$!
     log "dnsmasq started (PID=$DNSMASQ_PID)"
 }
@@ -160,8 +160,14 @@ generate_hostapd_conf() {
 }
 
 start_hostapd() {
-    log "[TESTING] Starting hostapd"
+    log "[x] Starting hostapd"
     sudo hostapd "$HOSTAPD_CONF" & HOSTAPD_PID=$!
     log "hostapd started (PID=$HOSTAPD_PID)"
 }
 
+
+capture_packets(){
+    log "Capturing trafic with tcpdump...."
+    sudo tcpdump -i $IFACE_MON -w $TCPDUMP_FILE & TCPDUMP_PID=$!
+    log "tcpdump started (PID=$TCPDUMP_PID)"
+}

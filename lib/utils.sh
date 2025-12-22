@@ -34,14 +34,18 @@ detect_inet_interface() {
 cleanup() {
     log "Stopping services"
 
-    pkill dnsmasq 2>/dev/null || true
-    pkill hostapd 2>/dev/null || true
+    [[ -n "${AIREPLAY_PID:-}" ]] && kill "$AIREPLAY_PID"
+    [[ -n "${TCPDUMP_PID:-}" ]] && kill "$TCPDUMP_PID"
+    [[ -n "${HOSTAPD_PID:-}" ]] && kill "$HOSTAPD_PID"
+    [[ -n "${DNSMASQ_PID:-}" ]] && kill "$DNSMASQ_PID"
 
+    wait 2>/dev/null
+    log "PID  stopped"
     iptables -t nat -F
     iptables -F
 
     sysctl -w net.ipv4.ip_forward=0 >/dev/null
 
-    log "Services stopped"
+    log "Network config stopped."
 }
 
